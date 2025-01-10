@@ -22,8 +22,8 @@ impl Modexp {
     /// (i.e., their greatest common divisor is 1).
     ///
     /// This function uses Fermat's Little Theorem, which states that if `modulus` is a prime number,
-    /// then for any integer `x` not divisible by `modulus`, x^(modulus-1) ≡ 1 (mod modulus).
-    /// Therefore, the modular inverse of `x` is x^(modulus-2) (mod modulus).
+    /// then for any integer `x` not divisible by `modulus`, `x` ^ (`modulus` - 1) ≡ 1 (mod `modulus`).
+    /// Therefore, the modular inverse of `x` is `x` ^ (`modulus` - 2) (mod `modulus`).
     ///
     /// # Arguments
     ///
