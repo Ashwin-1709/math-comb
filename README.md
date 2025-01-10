@@ -20,7 +20,10 @@ math-comb = "0.1.0"
 use math_comb::Comb;
 
 fn main() {
-    let comb: Comb = Comb::new(1000000007, 5);
+    let comb = Comb::new(
+        /* modulus = */ 1000000007,
+        /* max_fact = */ 5
+    );
     println!("5 choose 2: {}", comb.nCr(5, 2)); // Output: 10
     println!("5 permute 2: {}", comb.nPr(5, 2)); // Output: 60
 }
