@@ -1,6 +1,7 @@
-# math-comb
+# math-comb 
+![crates.io](https://img.shields.io/crates/v/math-comb.svg) ![Build Passing](https://github.com/Ashwin-1709/math-comb/actions/workflows/rust.yml/badge.svg)
 
-[![Rust Check](https://github.com/Ashwin-1709/math-comb/actions/workflows/rust.yml/badge.svg)](https://github.com/Ashwin-1709/math-comb/actions/workflows/rust.yml) Combinatorial and modular arithmetic library.
+Combinatorial and modular arithmetic library.
 
 ## Description
 
