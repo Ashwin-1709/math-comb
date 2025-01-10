@@ -1,0 +1,1 @@
+C:\Users\ashwi\Desktop\Random\ Coding\rust-crates\math-comb\target\debug\libmath_comb.rlib: C:\Users\ashwi\Desktop\Random\ Coding\rust-crates\math-comb\src\lib.rs C:\Users\ashwi\Desktop\Random\ Coding\rust-crates\math-comb\src\modexp.rs
