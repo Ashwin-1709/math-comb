@@ -1,6 +1,6 @@
 # math-comb
 
-Combinatorial and modular arithmetic library.
+[![Rust Check](https://github.com/Ashwin-1709/math-comb/actions/workflows/rust.yml/badge.svg)](https://github.com/Ashwin-1709/math-comb/actions/workflows/rust.yml) Combinatorial and modular arithmetic library.
 
 ## Description
 
