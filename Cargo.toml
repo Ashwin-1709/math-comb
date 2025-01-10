@@ -1,0 +1,14 @@
+[package]
+name = "math-comb"
+version = "0.1.0"
+edition = "2021"
+authors = ["Ashwin Pugalia"]
+description = "Combinatorial and modular arithmetic library."
+license = "MIT"
+repository = ""
+homepage = ""
+readme = "README.md"
+keywords = ["algorithms", "maths", "combinatorics", "rust"]
+categories = [""]
+
+[dependencies]
