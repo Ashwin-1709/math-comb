@@ -1,6 +1,6 @@
 [package]
 name = "math-comb"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["Ashwin Pugalia"]
 description = "Combinatorial and modular arithmetic library."
