@@ -21,7 +21,7 @@ autoexamples = false
 autotests = false
 autobenches = false
 description = "Combinatorial and modular arithmetic library."
-homepage = ""
+homepage = "https://github.com/Ashwin-1709/math-comb"
 readme = "README.md"
 keywords = [
     "algorithms",
@@ -31,7 +31,7 @@ keywords = [
 ]
 categories = [""]
 license = "MIT"
-repository = ""
+repository = "https://github.com/Ashwin-1709/math-comb"
 
 [lib]
 name = "math_comb"
