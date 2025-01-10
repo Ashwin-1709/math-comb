@@ -9,6 +9,6 @@ repository = "https://github.com/Ashwin-1709/math-comb"
 homepage = "https://github.com/Ashwin-1709/math-comb"
 readme = "README.md"
 keywords = ["algorithms", "maths", "combinatorics", "rust"]
-categories = ["competitive-programming-rs"]
+categories = ["algorithms"]
 
 [dependencies]
