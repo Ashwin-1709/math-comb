@@ -59,7 +59,7 @@ pub fn mod_inv(x: u64, modulus: u64) -> u64 {
     mod_exp(x, modulus - 2, modulus)
 }
 
-fn gcd(a: u64, b: u64) -> u64 {
+pub fn gcd(a: u64, b: u64) -> u64 {
     if b == 0 {
         a
     } else {

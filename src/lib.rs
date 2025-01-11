@@ -1,4 +1,41 @@
 mod modexp;
+mod pollard;
+
+/// A struct that provides methods for prime factorization using pollard rho algorithm and testing primality of numbers.
+pub struct Prime {}
+
+impl Prime {
+    /// Pollard's rho algorithm for integer factorization.
+    ///
+    /// # Arguments
+    ///
+    /// * `n` - The number to factorize.
+    ///
+    /// # Returns
+    ///
+    /// A non-trivial factor of `n`.
+    /// 
+    /// # Time Complexity
+    /// The algorithm offers a trade-off between its running time and the probability that it finds a factor. 
+    /// A prime divisor can be achieved with a probability around 0.5, in O(?d) <= O(`n`^(1/4)) iterations. 
+    /// This is a heuristic claim, and rigorous analysis of the algorithm remains open.
+    pub fn pollard(n: u64) -> u64 {
+       return pollard::pollard(n);
+    }
+
+    /// Factorizes `n` into its prime factors.
+    ///
+    /// # Arguments
+    ///
+    /// * `n` - The number to factorize.
+    ///
+    /// # Returns
+    ///
+    /// A vector containing the prime factors of `n` in sorted order.
+    pub fn factor(n: u64) -> Vec<u64> {
+        return pollard::factor(n);
+    }
+}
 
 /// A struct that provides methods for modular exponentiation and modular inverse calculations.
 pub struct Modexp {}
