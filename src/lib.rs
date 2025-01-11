@@ -35,6 +35,19 @@ impl Prime {
     pub fn factor(n: u64) -> Vec<u64> {
         return pollard::factor(n);
     }
+
+    /// Checks if `n` is a prime number.
+    ///
+    /// # Arguments
+    ///
+    /// * `n` - The number to check.
+    ///
+    /// # Returns
+    ///
+    /// `true` if `n` is prime, `false` otherwise.
+    pub fn is_prime(n: u64) -> bool {
+        return pollard::is_prime(n);
+    }
 }
 
 /// A struct that provides methods for modular exponentiation and modular inverse calculations.
