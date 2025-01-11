@@ -22,7 +22,7 @@ Add this crate to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-math-comb = "0.1.0"
+math-comb = "0.2.2"
 ```
 
 ### Examples
