@@ -3,6 +3,8 @@
 
 Math library for Combinatorics, Modular arithmetic & Prime Factorization.
 
+---
+
 ## Description
 
 This library provides a collection of mathematical utilities:
@@ -15,6 +17,9 @@ This library provides a collection of mathematical utilities:
 - Number Theory:
     - Primality checking
     - Prime factorization (using the `Pollard-Rho` algorithm)
+    - Smallest prime factor sieve (SPF)
+
+---
 
 ## Installation
 
@@ -22,10 +27,15 @@ Add this crate to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-math-comb = "0.2.2"
+math-comb = "0.2.3"
 ```
 
+---
+
 ### Examples
+
+#### Permutations & Combinations (Modular)
+
 ```rust
 use math_comb::Comb;
 
@@ -38,6 +48,8 @@ fn main() {
     println!("5 permute 2: {}", comb.nPr(5, 2)); // Output: 60
 }
 ```
+
+#### Modular Exponentiation & Inverse
 
 ```rust
 use math_comb::Modexp;
@@ -53,6 +65,8 @@ fn main() {
     println!("Modular inverse of 3 mod 11: {}", Modexp::mod_inv(x, modulus)); // Output: 4
 }
 ```
+
+#### Prime factorization & Primality checks
 
 ```rust
 use math_comb::Prime;
@@ -71,6 +85,29 @@ fn main() {
     println!("Is {} prime? {}", b, Prime::is_prime(b)); // Output: Is 21 prime? false
 }
 ```
+
+#### Smallest Prime Factors (SPF) & Prime Factorization
+
+```rust
+use math_comb::Spf;
+
+fn main() {
+    let spf = Spf::new(
+        /*max_limit = */ 10000000
+    );
+
+    // Get the smallest prime factor of a number
+    let number: u64 = 81;
+    println!("Smallest prime factor of {}: {}", number, spf.get_spf(number)); // Output: Smallest prime factor of 81: 3
+
+    // Factorize a number into its prime factors. This is O(logn) since we have precomputed spfs.
+    let number: u64 = 45;
+    let factors = spf.factorize(number);
+    println!("Prime factors of {}: {:?}", number, factors); // Output: Prime factors of 45: [3, 3, 5]
+}
+```
+
+---
 
 ## License
 

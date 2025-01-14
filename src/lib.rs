@@ -50,6 +50,91 @@ impl Prime {
     }
 }
 
+pub struct Spf {
+    spf_max_limit: usize,
+    spf: Vec<u64>
+}
+
+/// A struct representing the smallest prime factor (SPF) computation.
+impl Spf {
+    /// Creates a new `Spf` instance with a given maximum limit.
+    ///
+    /// # Arguments
+    ///
+    /// * `max_limit` - The maximum limit up to which the smallest prime factors are computed.
+    ///
+    /// # Returns
+    ///
+    /// A new `Spf` instance with precomputed smallest prime factors up to `max_limit`.
+    pub fn new(max_limit: usize) -> Spf {
+        let mut spf = vec![0; max_limit + 1];
+        for i in 2..=max_limit {
+            if spf[i] == 0 {
+                for j in (i..=max_limit).step_by(i) {
+                    if spf[j] == 0 {
+                        spf[j] = i as u64;
+                    }
+                }
+            }
+        }
+        Spf {
+            spf_max_limit: max_limit,
+            spf: spf,
+        }
+    }
+
+    /// Retrieves the smallest prime factor of a given number.
+    ///
+    /// # Arguments
+    ///
+    /// * `x` - The number for which the smallest prime factor is to be retrieved.
+    ///
+    /// # Returns
+    ///
+    /// The smallest prime factor of `x`.
+    ///
+    /// # Panics
+    ///
+    /// Panics if `x` is greater than the `max_limit` specified during the creation of the `Spf` instance.
+    pub fn get_spf(&self, x: u64) -> u64 {
+        if x as usize > self.spf_max_limit {
+            panic!("x cannot be greater than max_limit!");
+        }
+        self.spf[x as usize]
+    }
+
+    /// Factorizes a given number into its prime factors.
+    ///
+    /// # Arguments
+    ///
+    /// * `x` - The number to be factorized.
+    ///
+    /// # Returns
+    ///
+    /// A vector containing the prime factors of `x`.
+    ///
+    /// # Panics
+    ///
+    /// Panics if `x` is greater than the `max_limit` specified during the creation of the `Spf` instance.
+    ///
+    /// # Complexity
+    ///
+    /// The factorization process takes O(log n) time after the SPF computation.
+    pub fn factorize(&self, x: u64) -> Vec<u64> {
+        if x as usize > self.spf_max_limit {
+            panic!("x cannot be greater than max_limit!");
+        }
+        let mut factors: Vec<u64> = Vec::new();
+        let mut y: usize = x as usize;
+        while y != 1 {
+            factors.push(self.spf[y]);
+            y /= self.spf[y] as usize;
+        }
+        factors.sort();
+        factors
+    }
+}
+
 /// A struct that provides methods for modular exponentiation and modular inverse calculations.
 pub struct Modexp {}
 
@@ -270,5 +355,38 @@ mod tests {
     #[should_panic(expected = "modulus is not prime!")]
     fn test_composite_mod() {
         let comb: Comb = Comb::new(4, 14);
+    }
+
+    #[test]
+    pub fn test_spf() {
+        let spf: Spf = Spf::new(10000000);
+        assert_eq!(spf.get_spf(7), 7);
+        assert_eq!(spf.get_spf(25), 5);
+        assert_eq!(spf.get_spf(2491), 47);
+        assert_eq!(spf.get_spf(10000000), 2);
+        assert_eq!(spf.get_spf(81), 3);
+    }
+
+    #[test]
+    fn test_get_factors_via_spf() {
+        let spf: Spf = Spf::new(10000000);
+        assert_eq!(spf.factorize(1000429), vec![1000429]);
+        assert_eq!(spf.factorize(24), vec![2, 2, 2, 3]);
+        assert_eq!(spf.factorize(45), vec![3, 3, 5]);
+        assert_eq!(spf.factorize(346789), vec![239, 1451]);
+    }
+
+    #[test]
+    #[should_panic(expected = "x cannot be greater than max_limit!")]
+    fn test_spf_factorize_above_limit() {
+        let spf: Spf = Spf::new(15);
+        spf.factorize(16);
+    }
+
+    #[test]
+    #[should_panic(expected = "x cannot be greater than max_limit!")]
+    fn test_spf_above_limit() {
+        let spf: Spf = Spf::new(15);
+        spf.get_spf(16);
     }
 }
